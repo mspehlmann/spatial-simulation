@@ -29,7 +29,7 @@ variance_cont = 2
 cov_cat = gaussian_kernel(locations=locations, range=range_cat, variance=variance_cat)
 gp_samples_cat = np.random.multivariate_normal(mean=np.zeros(num_locations), cov=cov_cat, size=k)
 gp_stacked = np.stack(gp_samples_cat, axis=-1)
-categories = np.argmax(gp_stacked, axis=-1).reshape(n_points_X, n_points_Y)  # 2D array of categories
+categories = np.argmax(gp_stacked, axis=-1).reshape(n_points_X, n_points_Y)  #2D array of categories
 
 #Visualize the categorical process
 plt.imshow(categories, extent=(0, 10, 0, 10), origin='lower', cmap="tab10")
@@ -61,7 +61,6 @@ plt.show()
 mean_vector = [0, 5, 10]  # Means for each category
 variance_vector = [1, 2, 1.5]  # Variances for each category
 
-#Allocate space for the continuous process
 continuous_values = np.zeros(num_locations)
 
 alpha = 1.0  #Controls blending sharpness

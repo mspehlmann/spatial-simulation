@@ -3,19 +3,19 @@ import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 from scipy.ndimage import distance_transform_edt
 
-#Define the spatial domain for the categorical process (regular grid)
+#Define the spatial domain for the categorical process
 n_points_X = 25
 n_points_Y = 25
 x = np.linspace(0, 10, n_points_X)
 y = np.linspace(0, 10, n_points_Y)
 X, Y = np.meshgrid(x, y)
-locations_cat = np.column_stack([X.ravel(), Y.ravel()])  # Grid locations
+locations_cat = np.column_stack([X.ravel(), Y.ravel()])  #Grid locations
 
 #Generate random points for the continuous process
 num_random_points = 100
 random_x = np.random.uniform(0, 10, num_random_points)
 random_y = np.random.uniform(0, 10, num_random_points)
-locations_cont = np.column_stack([random_x, random_y])  # Scattered points
+locations_cont = np.column_stack([random_x, random_y])  #Scattered points
 
 #Kernel function
 def gaussian_kernel(locations, range=1.0, variance=1.0):
@@ -52,8 +52,8 @@ assigned_categories = categories.ravel()[closest_grid_indices]
 
 #Step 3: Simulate the continuous process at scattered points with blending
 #Define category-specific parameters
-mean_vector = [0, 5, 10]  # Means for each category
-variance_vector = [1, 2, 1.5]  # Variances for each category
+mean_vector = [0, 5, 10]  #Means for each category
+variance_vector = [1, 2, 1.5]  #Variances for each category
 
 continuous_values = np.zeros(num_random_points)
 alpha = 1.0  #Controls blending sharpness
